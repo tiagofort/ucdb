@@ -1,7 +1,7 @@
 // src/IndexPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './index.css'; // Import your custom CSS file for this component
+import './css/index.css'; // Import your custom CSS file for this component
 import signIcon from '../src/assets/assinar.png'; // Adjust path as needed
 
 

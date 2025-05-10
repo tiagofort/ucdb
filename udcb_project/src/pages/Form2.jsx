@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
-import './index.css'; // Use the global CSS
+import '../css/index.css'; // Use the global CSS
 
 function Form2() {
   return (

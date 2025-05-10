@@ -2,8 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Index from './index';
-import Form1 from './Form1';
-import Form2 from './Form2';
+import Form1 from './pages/Form1';
+import Form2 from './pages/Form2';
 // Note: We import index.css in main.jsx, so no need to import it here again
 
 function App() {

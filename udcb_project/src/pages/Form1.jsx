@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/form1.css';
 // Importe a imagem do botão salvar (ajuste o caminho)
 import saveIcon from '../assets/salvar.png'; // Substitua pelo caminho real
+import ucdb from '../assets/UCDB.jpg';
 import cidadesPorEstadoData from '../data/cidades.json';
 import SelectInput from '../components/SelectInput';
 import RadioGroup from '../components/RadioGroup';
@@ -25,7 +26,7 @@ const estadosBrasileiros = [
 
 
 function Form1() {
-    // --- Estados para os campos do formulário (mantém igual) ---
+    
     const [estado, setEstado] = useState('');
     const [cidade, setCidade] = useState('');
     const [listaCidades, setListaCidades] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
@@ -45,7 +46,6 @@ function Form1() {
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
-   // --- EFEITO MODIFICADO para usar o JSON importado ---
     useEffect(() => {
         if (estado) {
             const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === estado);
@@ -100,9 +100,12 @@ function Form1() {
         setShowModal(false);
     };
 
-    // --- JSX ---
+
     return (
-        <form onSubmit={handleSubmit} className="form-wrapper"> {/* Usando tag form e wrapper */}
+        <form onSubmit={handleSubmit} className="form-wrapper"> 
+            
+            <img src={ucdb} alt="Marca d'água" className="water-mark"></img>
+
             <h2 className="legenda-prin">
                 Primeiro, gostaria de saber seus dados sociodemográficos com o objetivo de caracterizar quem participou desta pesquisa.
             </h2>
@@ -290,7 +293,7 @@ function Form1() {
 
             {/* --- Pergunta 14: Renda Familiar --- */}
             <RadioGroup
-                name="suicidio"
+                name="rendaFamiliar"
                 label="14- Qual a renda mensal da sua família?"
                 className="radio-group"
                 options={[
@@ -321,22 +324,21 @@ function Form1() {
                 </div>
             </div>
 
-            {/* --- Botão Salvar --- */}
+
             <div className="action-button-section">
-                <button type="submit" className="submit-button"> {/* Usar classe semântica */}
-                    <img className="button-icon" src={saveIcon} alt="" /> {/* Adicionar alt text descritivo se necessário */}
+                <button type="submit" className="submit-button"> 
+                    <img className="button-icon" src={saveIcon} alt="" />
                     Salvar
                 </button>
             </div>
 
-            {/* --- Modal/Alerta --- */}
-            {/* Renderização condicional do Modal */}
+            
             {showModal && (
-                <div className="modal-overlay"> {/* Fundo semi-transparente */}
-                    <div className="modal-content"> {/* Conteúdo do Modal */}
+                <div className="modal-overlay">
+                    <div className="modal-content">
                         <p>{modalMessage}</p>
                         <button type="button" className="modal-close-button" onClick={closeModal}>
-                            OK {/* Ou Próximo, dependendo da ação */}
+                            OK 
                         </button>
                     </div>
                 </div>

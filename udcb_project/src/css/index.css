@@ -1,6 +1,4 @@
-/* src/index.css */
 
-/* Basic reset and full height setup */
 html,
 body,
 #root {
@@ -13,48 +11,52 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
-  /* Light gray background for contrast */
 }
 
+.paragraph {
+  margin-left: 15px;
+}
 
-/* Container to enable flex centering */
+.water-mark {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  opacity: 0.2;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .water-mark {
+    display: none;
+  }
+}
+
 .page-container {
   display: flex;
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   min-height: 100vh;
-  /* Take at least full viewport height */
   width: 100%;
   padding: 20px;
-  /* Add some padding around the centered div */
   box-sizing: border-box;
-  /* Include padding in width/height calculation */
 }
 
-/* The actual centered content box */
 .centered-div {
   border: 1px solid #ccc;
   padding: 30px 40px;
-  /* More padding */
   background-color: #ffffff;
-  /* White background for the box */
   text-align: center;
-  /* Center text/button inside the div */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Slightly stronger shadow */
   border-radius: 8px;
   max-width: 600px;
-  /* Optional: limit max width */
   width: 90%;
-  /* Responsive width */
 }
 
 .centered-div h2 {
   margin-top: 0;
   margin-bottom: 15px;
-  /* Space below heading */
   color: #333;
 }
 
@@ -63,7 +65,6 @@ body,
   line-height: 1.6;
   margin-bottom: 25px;
   text-align: left;
-  /* Align paragraph text left for readability */
 }
 
 .centered-div button {
@@ -77,16 +78,13 @@ body,
   border-radius: 5px;
   transition: background-color 0.2s ease-in-out;
   display: block;
-  /* Make button block level */
   margin: 20px auto 0;
-  /* Center button with auto margins */
 }
 
 .centered-div button:hover {
   background-color: #0056b3;
 }
 
-/* Basic styling for links if you add them later */
 a {
   color: #007bff;
   text-decoration: none;
@@ -96,146 +94,88 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ConsentDetails.css */
-
-/* ConsentDetails.css */
-
-/* --- Estilo para a Nova Div Wrapper --- */
 .consent-form-wrapper {
   max-width: 800px;
-  /* Largura máxima do contêiner principal */
   margin-left: auto;
-  /* Centraliza horizontalmente */
   margin-right: auto;
-  /* Centraliza horizontalmente */
   padding: 25px;
-  /* Espaçamento interno */
   margin-top: 2rem;
-  /* Espaçamento acima */
   margin-bottom: 2rem;
-  /* Espaçamento abaixo */
-
-  /* Estilos visuais opcionais para o contêiner */
-  /* border: 1px solid #e0e0e0; */
-  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
-  /* background-color: #ffffff; */
-  /* border-radius: 8px; */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  border-radius: 8px;
 }
 
-/* --- Estilos para o TÍTULO PRINCIPAL --- */
 .legenda-prin {
   text-align: center;
-  /* Centraliza o texto */
   font-size: 1.6rem;
-  /* Tamanho da fonte do título (ajuste conforme necessário) */
   font-weight: bold;
-  /* Peso da fonte (negrito) */
   color: #2c3e50;
-  /* Cor do título (ajuste conforme necessário) */
   margin-top: 0.5rem;
-  /* Espaço acima do título (opcional) */
   margin-bottom: 2.5rem;
-  /* Espaço abaixo do título, antes do conteúdo */
   line-height: 1.4;
-  /* Altura da linha para títulos longos */
   text-transform: uppercase;
-  /* Opcional: Coloca o texto em maiúsculas */
 }
 
-
-/* --- Estilos Gerais para o conteúdo --- */
-
-/* Pode ajustar ou remover padding/margin aqui se já estiver no wrapper */
 .consent-details-content {
   text-align: justify;
   margin-bottom: 1.5rem;
-  /* Espaço antes da próxima seção */
 }
 
 .p-principal {
   margin-bottom: 1rem;
-  /* Espaço entre parágrafos */
   line-height: 1.6;
-  /* Altura da linha para melhor legibilidade */
   font-size: 0.95rem;
-  /* Tamanho de fonte base */
   color: #333;
-  /* Cor do texto principal */
 }
 
 .p-principal b {
   font-weight: 600;
-  /* Peso da fonte para negrito */
   color: #111;
-  /* Cor ligeiramente mais escura para títulos em negrito */
 }
 
-
-/* --- Seção dos Pesquisadores --- */
 .researcher-section {
   margin-top: 2rem;
-  /* Espaço acima da seção */
   margin-bottom: 2rem;
-  /* Espaço abaixo da seção */
   display: flex;
-  /* Usado para centralizar o .researcher-info */
   justify-content: center;
 }
 
 .researcher-info {
   background-color: #f8f9fa;
-  /* Fundo claro para destacar */
   border-radius: 6px;
-  /* Bordas arredondadas */
   padding: 1.5rem;
-  /* Espaçamento interno generoso */
   text-align: center;
-  /* Centraliza o texto dentro desta caixa */
   border: 1px solid #e9ecef;
-  /* Borda sutil */
   width: 100%;
-  /* Ocupa a largura permitida pelo flex container */
   max-width: 650px;
-  /* Limita a largura máxima da caixa de informações */
   line-height: 1.7;
-  /* Altura da linha para espaçamento */
 }
 
 .contact-email {
   color: #0056b3;
-  /* Cor azul para emails/links */
   font-weight: bold;
   word-break: break-all;
-  /* Quebra emails longos se necessário */
 }
 
 .section-subtitle {
   display: block;
-  /* Faz ocupar a linha inteira */
   margin-top: 1.2rem;
-  /* Espaço acima dos subtítulos */
   margin-bottom: 0.3rem;
-  /* Espaço abaixo dos subtítulos */
   font-weight: bold;
   font-size: 1rem;
   color: #333;
 }
 
-
-/* --- Seção dos Termos --- */
 .terms-section {
   margin-top: 2.5rem;
-  /* Espaço acima da seção de termos */
   margin-bottom: 2.5rem;
-  /* Espaço abaixo */
-  /* color: #842029; */
-  /* Cor vermelha/alerta para termos, se desejado */
-  /* background-color: #f8d7da; */
-  /* Fundo de alerta, se desejado */
-  /* border: 1px solid #f5c2c7; */
-  /* Borda de alerta, se desejado */
-  /* padding: 1rem; */
-  /* border-radius: 5px; */
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .terms-content {
@@ -248,60 +188,39 @@ a:hover {
   font-weight: bold;
   font-size: 1.1rem;
   color: #58151c;
-  /* Cor mais escura para o título dos termos, se usando fundo de alerta */
 }
 
-
-/* --- Seção do Botão de Ação --- */
 .action-button-section {
   margin-top: 2rem;
-  /* Espaço acima do botão */
   text-align: center;
-  /* Centraliza o botão se ele não for display: block */
 }
 
 .consent-button {
-  /* Estilo Base do Botão */
   display: inline-block;
-  /* Mude para 'block' se quiser largura 100% sempre */
   width: auto;
-  /* Largura automática por padrão */
   min-width: 250px;
-  /* Largura mínima */
   font-weight: 500;
   color: #ffffff;
-  /* Cor do texto */
   text-align: center;
   vertical-align: middle;
   user-select: none;
   background-color: #007bff;
-  /* Cor de fundo principal */
   border: 1px solid #007bff;
-  /* Borda da mesma cor */
   padding: 0.8rem 1.5rem;
-  /* Espaçamento interno (ajusta tamanho) */
   font-size: 1.1rem;
-  /* Tamanho da fonte */
   line-height: 1.5;
   border-radius: 0.3rem;
-  /* Bordas arredondadas */
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   cursor: pointer;
   text-decoration: none;
-  /* Remove sublinhado se usar como link */
-
-  /* Efeito Hover (quando o mouse está sobre) */
 }
 
 .consent-button:hover {
   background-color: #0056b3;
-  /* Cor de fundo mais escura */
   border-color: #004085;
-  /* Cor da borda mais escura */
   color: #ffffff;
 }
 
-/* Opcional: Se quiser que o botão ocupe 100% da largura em telas menores */
 @media (max-width: 576px) {
   .consent-button {
     display: block;
@@ -309,13 +228,9 @@ a:hover {
   }
 }
 
-
 .consent-button-icon {
   margin-right: 0.6rem;
-  /* Espaço entre o ícone e o texto */
   vertical-align: text-bottom;
-  /* Alinha melhor o ícone com o texto */
   height: 1.2em;
-  /* Ajusta o tamanho do ícone relativo à fonte */
   width: auto;
 }

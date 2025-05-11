@@ -5,6 +5,10 @@
     margin: 20px auto;
     border-radius: 10px;
     font-family: Arial, sans-serif;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
 }
 
 .legenda-prin {
@@ -132,3 +136,15 @@
 .submit-button:hover {
     background: #0066cc;
 }
+
+.water-mark {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    opacity: 0.2;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+

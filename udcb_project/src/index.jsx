@@ -65,7 +65,7 @@ function Index() {
           <span className='paragraph'><b>5.</b> A pesquisa aqui proposta foi aprovada pelo <b>Comitê de Ética em Pesquisa (CEP), da Universidade Católica Dom Bosco (UCDB)</b>, que a referenda; e</span> <br />
           <span className='paragraph'><b>6.</b> O presente termo está assinado em duas vias.</span>
         </p>
-      </div> {/* Fim de consent-details-content */}
+      </div> 
 
 
       <div className="researcher-section">
@@ -108,7 +108,7 @@ function Index() {
         </button>
       </div>
 
-    </div> // Fim de consent-form-wrapper
+    </div> 
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // Importe seu arquivo CSS personalizado
 import '../css/form1.css';
-// Importe a imagem do botão salvar (ajuste o caminho)
+import { useNavigate } from 'react-router-dom';
 import saveIcon from '../assets/salvar.png'; // Substitua pelo caminho real
 import ucdb from '../assets/UCDB.jpg';
 import cidadesPorEstadoData from '../data/cidades.json';
@@ -26,7 +26,8 @@ const estadosBrasileiros = [
 
 
 function Form1() {
-    
+
+    const navigate = useNavigate();
     const [estado, setEstado] = useState('');
     const [cidade, setCidade] = useState('');
     const [listaCidades, setListaCidades] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
@@ -94,6 +95,7 @@ function Form1() {
         console.log("Dados do Formulário:", formData);
         setModalMessage("Dados salvos com sucesso! (Simulação)");
         setShowModal(true);
+        navigate('/form2Instruction');
     };
 
     const closeModal = () => {

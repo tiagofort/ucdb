@@ -51,41 +51,31 @@ function Form1() {
         if (estado) {
             const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === estado);
             if (estadoEncontrado) {
-                // Pega a lista de nomes de cidades do objeto 'estadoEncontrado'
                 const nomesCidades = estadoEncontrado.cidades;
-
-                // Mapeia os nomes para o formato { value: nome, label: nome }
-                // Adiciona a opção "Selecione..." no início
                 const cidadesFormatadas = [
                     { value: "", label: "Selecione..." },
                     ...nomesCidades.map(nomeCidade => ({ value: nomeCidade, label: nomeCidade }))
                 ];
                 setListaCidades(cidadesFormatadas);
             } else {
-                // Se o estado selecionado não for encontrado no JSON
                 setListaCidades([{ value: "", label: "Estado inválido" }]);
             }
         } else {
-            // Se nenhum estado for selecionado
             setListaCidades([{ value: "", label: "Selecione o estado primeiro" }]);
         }
-        // Reseta a cidade selecionada sempre que o estado mudar
         setCidade('');
-    }, [estado]); // Executa quando 'estado' mudar
+    }, [estado]);
 
-    // --- Handlers (mantém igual: handleInputChange, handleSubmit, closeModal) ---
     const handleInputChange = (setter) => (event) => {
         setter(event.target.value);
     };
 
     const handleEstadoChange = (event) => {
         setEstado(event.target.value);
-        // A busca de cidades agora é feita pelo useEffect usando o JSON
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Validação básica (exemplo)
         if (!estado || !cidade || !instituicao || !idade || !sexo || !estadoCivil || !religiao || !periodo || !experiencia || !cursoSuicidio || !discSuicidio || !estagSuicidio || !contatoSuicidio || !rendaFamiliar) {
             setModalMessage("Por favor, preencha todos os campos obrigatórios.");
             setShowModal(true);
@@ -346,7 +336,7 @@ function Form1() {
                 </div>
             )}
 
-        </form> // Fim da tag form
+        </form>
     );
 }
 

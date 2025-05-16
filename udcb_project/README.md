@@ -111,7 +111,7 @@ This step-by-step structure ensures careful responses and clear user flow.
 ---
 
 ## 🔗 Link to deployed page
-https://ucdb.vercel.app/form2
+https://ucdb.vercel.app/
 
 ## ▶️ Getting Started
 

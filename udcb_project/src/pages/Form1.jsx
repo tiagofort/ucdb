@@ -66,6 +66,7 @@ function Form1() {
         }
         const formData = { estado, cidade, instituicao, idade, sexo, estadoCivil, religiao, periodo, experiencia, cursoSuicidio, discSuicidio, estagSuicidio, contatoSuicidio, rendaFamiliar, observacoes };
         console.log("Dados do Formulário:", formData);
+        localStorage.setItem("form1", JSON.stringify(formData));
         setModalMessage("Dados salvos com sucesso! (Simulação)");
         setShowModal(true);
         navigate('/form2Instruction');

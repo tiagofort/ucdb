@@ -1,6 +1,30 @@
-const QuestionSlider = ({id, question, enabled, answered, isCurrent, onFinalChange}) => {
-  
-  const handleFinalChange = (e) => {
+import React, { useState, useEffect } from 'react';
+
+const QuestionSlider = ({
+  id,
+  question,
+  enabled,
+  answered,
+  isCurrent,
+  value,
+  onChange,
+  onFinalChange
+}) => {
+  const [localValue, setLocalValue] = useState(value ?? 50);
+
+  useEffect(() => {
+    if (value !== null && value !== localValue) {
+      setLocalValue(value);
+    }
+  }, [value]);
+
+  const handleSliderChange = (e) => {
+    const newValue = Number(e.target.value);
+    setLocalValue(newValue);
+    onChange?.(newValue);
+  };
+
+  const handleFinalInteraction = () => {
     if (!answered) {
       onFinalChange();
     }
@@ -11,10 +35,7 @@ const QuestionSlider = ({id, question, enabled, answered, isCurrent, onFinalChan
 
   return (
     <div className="question-block" style={{ opacity: blockOpacity }}>
-      <div
-        className="question-title"
-        style={{ color: titleColor }}
-      >
+      <div className="question-title" style={{ color: titleColor }}>
         <strong>{question}</strong>
       </div>
       <div className="slider-container">
@@ -25,10 +46,11 @@ const QuestionSlider = ({id, question, enabled, answered, isCurrent, onFinalChan
           className="slider"
           min="0"
           max="100"
-          defaultValue={50}
+          value={localValue}
           disabled={!enabled}
-          onMouseUp={handleFinalChange}
-          onTouchEnd={handleFinalChange}
+          onChange={handleSliderChange}
+          onMouseUp={handleFinalInteraction}
+          onTouchEnd={handleFinalInteraction}
         />
         <div className="label right">Concordo<br />Plenamente</div>
       </div>

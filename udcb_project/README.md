@@ -1,6 +1,8 @@
-# 🧠 Survey Web App – React + JavaScript + CSS
+# 🧠 KNOWLEDGE AND ATTITUDES OF MEDICAL STUDENTS REGARDING SUICIDE – React + JavaScript + CSS
 
-This project is a simple, lightweight survey application built using **React**, **vanilla CSS**, and **JavaScript**. The core purpose is to guide participants through a structured questionnaire with clear navigation and intuitive user interaction.
+This project is a simple, lightweight survey application built using **React**, **vanilla CSS**, and **JavaScript**. 
+**About:** 
+This project was requested by the Psychology Team for studies related to suicide. This study aims to explore how medical students perceive the topic of suicide, identifying their level of understanding and personal attitudes toward this sensitive issue. The outcomes of this study may contribute to the development of future interventions aimed at healthcare professionals—especially medical students and practicing physicians—by informing strategies related to suicide awareness and prevention.
 
 ---
 
@@ -67,7 +69,7 @@ Static files serve as a lightweight data source:
 - **`cidades.json`**  
   Contains a list of cities, dynamically populated in the city select based on the selected state.
 
-- **`form1.js`**  
+- **`estados.js`**  
   Provides the list of Brazilian states for the Form 1 select input.
 
 - **`form2.js`**  

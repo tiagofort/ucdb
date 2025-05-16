@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import saveIcon from '../assets/salvar.png';
 import ucdb from '../assets/UCDB.jpg';
 import cidadesPorEstadoData from '../data/cidades';
-import estadosBrasileiros from '../data/form1';
+import estadosBrasileiros from '../data/estados';
 import SelectInput from '../components/SelectInput';
 import RadioGroup from '../components/RadioGroup';
 

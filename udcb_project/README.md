@@ -120,6 +120,6 @@ To run this project locally:
 
 ```bash
 git clone https://github.com/tiagofort/ucdb.git
-cd your-repo-name
+cd ucdb_project
 npm install
 npm run dev

@@ -19,6 +19,7 @@ Reusable components were emphasized to **reduce repetition**, improve **maintain
 
 ## 🧩 Folder Structure Overview
 
+```text
 src/
 ├── assets/
 ├── components/

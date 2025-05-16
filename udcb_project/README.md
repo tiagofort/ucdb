@@ -118,7 +118,7 @@ https://ucdb.vercel.app/
 To run this project locally:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/tiagofort/ucdb.git
 cd your-repo-name
 npm install
 npm run dev

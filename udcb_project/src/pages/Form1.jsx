@@ -1,29 +1,12 @@
 import React, { useState, useEffect } from 'react';
-// Importe seu arquivo CSS personalizado
 import '../css/form1.css';
 import { useNavigate } from 'react-router-dom';
-import saveIcon from '../assets/salvar.png'; // Substitua pelo caminho real
+import saveIcon from '../assets/salvar.png';
 import ucdb from '../assets/UCDB.jpg';
-import cidadesPorEstadoData from '../data/cidades.json';
+import cidadesPorEstadoData from '../data/cidades';
+import estadosBrasileiros from '../data/form1';
 import SelectInput from '../components/SelectInput';
 import RadioGroup from '../components/RadioGroup';
-
-// Lista de estados (poderia vir de uma API ou arquivo de configuração)
-const estadosBrasileiros = [
-    { value: "", label: "Selecione..." },
-    { value: "AC", label: "Acre" }, { value: "AL", label: "Alagoas" }, { value: "AP", label: "Amapá" },
-    { value: "AM", label: "Amazonas" }, { value: "BA", label: "Bahia" }, { value: "CE", label: "Ceará" },
-    { value: "DF", label: "Distrito Federal" }, { value: "ES", label: "Espírito Santo" }, { value: "GO", label: "Goiás" },
-    { value: "MA", label: "Maranhão" }, { value: "MT", label: "Mato Grosso" }, { value: "MS", label: "Mato Grosso do Sul" },
-    { value: "MG", label: "Minas Gerais" }, { value: "PA", label: "Pará" }, { value: "PB", label: "Paraíba" },
-    { value: "PR", label: "Paraná" }, { value: "PE", label: "Pernambuco" }, { value: "PI", label: "Piauí" },
-    { value: "RJ", label: "Rio de Janeiro" }, { value: "RN", label: "Rio Grande do Norte" }, { value: "RS", label: "Rio Grande do Sul" },
-    { value: "RO", label: "Rondônia" }, { value: "RR", label: "Roraima" }, { value: "SC", label: "Santa Catarina" },
-    { value: "SP", label: "São Paulo" }, { value: "SE", label: "Sergipe" }, { value: "TO", label: "Tocantins" }
-];
-
-
-
 
 function Form1() {
 

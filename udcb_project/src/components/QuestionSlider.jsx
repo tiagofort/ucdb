@@ -1,11 +1,5 @@
-const QuestionSlider = ({
-  id,
-  question,
-  enabled,
-  answered,
-  isCurrent,
-  onFinalChange
-}) => {
+const QuestionSlider = ({id, question, enabled, answered, isCurrent, onFinalChange}) => {
+  
   const handleFinalChange = (e) => {
     if (!answered) {
       onFinalChange();

@@ -13,7 +13,7 @@ function Form2() {
     const [answered, setAnswered] = useState(Array(questions.length).fill(false));
     const [showModal, setShowModal] = useState(false);
     const [pendingIndex, setPendingIndex] = useState(null);
-    const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+    const [answers, setAnswers] = useState(Array(questions.length).fill(50));
 
     const handleAnswerChange = (index, value) => {
         const updatedAnswers = [...answers];

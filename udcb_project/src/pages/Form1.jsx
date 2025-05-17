@@ -31,6 +31,12 @@ function Form1() {
     const [modalMessage, setModalMessage] = useState('');
 
     useEffect(() => {
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+    }, []);
+
+    useEffect(() => {
         if (estado) {
             const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === estado);
             if (estadoEncontrado) {

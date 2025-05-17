@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/index.css';
 import '../css/form2.css';
@@ -14,6 +14,12 @@ function Form2() {
     const [showModal, setShowModal] = useState(false);
     const [pendingIndex, setPendingIndex] = useState(null);
     const [answers, setAnswers] = useState(Array(questions.length).fill(50));
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50);
+    }, []);
 
     const handleAnswerChange = (index, value) => {
         const updatedAnswers = [...answers];

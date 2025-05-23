@@ -11,22 +11,22 @@ import RadioGroup from '../components/RadioGroup';
 function Form1() {
 
     const navigate = useNavigate();
-    const [estado, setEstado] = useState('');
-    const [cidade, setCidade] = useState('');
+    const [state, setEstado] = useState('');
+    const [city, setCidade] = useState('');
     const [listaCidades, setListaCidades] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
-    const [instituicao, setInstituicao] = useState('');
-    const [idade, setIdade] = useState('');
-    const [sexo, setSexo] = useState('');
-    const [estadoCivil, setEstadoCivil] = useState('');
-    const [religiao, setReligiao] = useState('');
-    const [periodo, setPeriodo] = useState('');
-    const [experiencia, setExperiencia] = useState('');
-    const [cursoSuicidio, setCursoSuicidio] = useState('');
-    const [discSuicidio, setDiscSuicidio] = useState('');
-    const [estagSuicidio, setEstagSuicidio] = useState('');
-    const [contatoSuicidio, setContatoSuicidio] = useState('');
-    const [rendaFamiliar, setRendaFamiliar] = useState('');
-    const [observacoes, setObservacoes] = useState('');
+    const [institutionType, setInstituicao] = useState('');
+    const [age, setIdade] = useState('');
+    const [gender, setSexo] = useState('');
+    const [marital_status, setEstadoCivil] = useState('');
+    const [religion, setReligiao] = useState('');
+    const [semester, setPeriodo] = useState('');
+    const [experience_time, setExperiencia] = useState('');
+    const [suicideCourse, setCursoSuicidio] = useState('');
+    const [suicideDiscipline, setDiscSuicidio] = useState('');
+    const [suicideInternship, setEstagSuicidio] = useState('');
+    const [suicide, setContatoSuicidio] = useState('');
+    const [salaryAverage, setRendaFamiliar] = useState('');
+    const [obs, setObservacoes] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
@@ -37,8 +37,8 @@ function Form1() {
     }, []);
 
     useEffect(() => {
-        if (estado) {
-            const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === estado);
+        if (state) {
+            const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === state);
             if (estadoEncontrado) {
                 const nomesCidades = estadoEncontrado.cidades;
                 const cidadesFormatadas = [
@@ -53,7 +53,7 @@ function Form1() {
             setListaCidades([{ value: "", label: "Selecione o estado primeiro" }]);
         }
         setCidade('');
-    }, [estado]);
+    }, [state]);
 
     const handleInputChange = (setter) => (event) => {
         setter(event.target.value);
@@ -65,12 +65,12 @@ function Form1() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!estado || !cidade || !instituicao || !idade || !sexo || !estadoCivil || !religiao || !periodo || !experiencia || !cursoSuicidio || !discSuicidio || !estagSuicidio || !contatoSuicidio || !rendaFamiliar) {
+        if (!state || !city || !institutionType || !age || !gender || !marital_status || !religion || !semester || !experience_time || !suicideCourse || !suicideDiscipline || !suicideInternship || !suicide || !salaryAverage) {
             setModalMessage("Por favor, preencha todos os campos obrigatórios.");
             setShowModal(true);
             return;
         }
-        const formData = { estado, cidade, instituicao, idade, sexo, estadoCivil, religiao, periodo, experiencia, cursoSuicidio, discSuicidio, estagSuicidio, contatoSuicidio, rendaFamiliar, observacoes };
+        const formData = { state, city, institutionType, age, gender, marital_status, religion, semester, experience_time, suicideCourse, suicideDiscipline, suicideInternship, suicide, salaryAverage, obs };
         console.log("Dados do Formulário:", formData);
         localStorage.setItem("form1", JSON.stringify(formData));
         setModalMessage("Dados salvos com sucesso! (Simulação)");
@@ -97,7 +97,7 @@ function Form1() {
                 id="inputEstado"
                 label="1- Você mora em qual estado?"
                 options={estadosBrasileiros}
-                value={estado}
+                value={state}
                 onChange={handleEstadoChange}
             />
 
@@ -106,9 +106,9 @@ function Form1() {
                 id="inputCidade"
                 label="2- Você mora em qual cidade?"
                 options={listaCidades}
-                value={cidade}
+                value={city}
                 onChange={handleInputChange(setCidade)}
-                disabled={!estado || listaCidades.length <= 1}
+                disabled={!state || listaCidades.length <= 1}
             />
 
             {/* --- Pergunta 3: Instituição --- */}
@@ -120,7 +120,7 @@ function Form1() {
                     { id: 'rPB', value: 'R_PB', label: 'Pública' },
                     { id: 'rPV', value: 'R_PV', label: 'Privada' }
                 ]}
-                selectedValue={instituicao}
+                selectedValue={institutionType}
                 onChange={handleInputChange(setInstituicao)}
             />
 
@@ -134,7 +134,7 @@ function Form1() {
                         id="iIdade"
                         placeholder="Informe sua idade"
                         min="0"
-                        value={idade}
+                        value={age}
                         onChange={handleInputChange(setIdade)}
                         required
                     />
@@ -150,7 +150,7 @@ function Form1() {
                     { id: 'rMasc', value: 'M', label: 'Masculino' },
                     { id: 'rFem', value: 'F', label: 'Feminino' }
                 ]}
-                selectedValue={sexo}
+                selectedValue={gender}
                 onChange={handleInputChange(setSexo)}
             />
 
@@ -165,7 +165,7 @@ function Form1() {
                     { id: 'rViuvo', value: 'EC_V', label: 'Viúvo(a)' },
                     { id: 'rNamorando', value: 'EC_N', label: 'Namorando' },
                 ]}
-                selectedValue={estadoCivil}
+                selectedValue={marital_status}
                 onChange={handleInputChange(setEstadoCivil)}
             />
 
@@ -180,7 +180,7 @@ function Form1() {
                     { id: 'rEspirita', value: 'RL_E', label: 'Espírita (Candomblé, Umbanda, Budismo)' },
                     { id: 'rAteu', value: 'RL_AT', label: 'Ateu' },
                 ]}
-                selectedValue={religiao}
+                selectedValue={religion}
                 onChange={handleInputChange(setReligiao)}
             />
 
@@ -197,7 +197,7 @@ function Form1() {
                     { id: 'r90', value: '90', label: '9º/10º período' },
                     { id: 'r112', value: '112', label: '11º/12º período' },
                 ]}
-                selectedValue={periodo}
+                selectedValue={semester}
                 onChange={handleInputChange(setPeriodo)}
             />
 
@@ -212,7 +212,7 @@ function Form1() {
                     { id: 'r2S', value: 'TE_2S', label: '2 semestres' },
                     { id: 'rM2', value: 'TE_M2S', label: 'Mais de 2 semestres' },
                 ]}
-                selectedValue={experiencia}
+                selectedValue={experience_time}
                 onChange={handleInputChange(setExperiencia)}
             />
 
@@ -226,7 +226,7 @@ function Form1() {
                     { id: 'rNaoC', value: 'N', label: 'Não' },
                     { id: 'rNRC', value: 'NR', label: 'Não recordo' }
                 ]}
-                selectedValue={cursoSuicidio}
+                selectedValue={suicideCourse}
                 onChange={handleInputChange(setCursoSuicidio)}
             />
 
@@ -240,7 +240,7 @@ function Form1() {
                     { id: 'rNaoD', value: 'N', label: 'Não' },
                     { id: 'rNRD', value: 'NR', label: 'Não recordo' }
                 ]}
-                selectedValue={discSuicidio}
+                selectedValue={suicideDiscipline}
                 onChange={handleInputChange(setDiscSuicidio)}
             />
 
@@ -254,7 +254,7 @@ function Form1() {
                     { id: 'rNaoE', value: 'N', label: 'Não' },
                     { id: 'rNRE', value: 'NR', label: 'Não recordo' }
                 ]}
-                selectedValue={estagSuicidio}
+                selectedValue={suicideInternship}
                 onChange={handleInputChange(setEstagSuicidio)}
             />
 
@@ -269,7 +269,7 @@ function Form1() {
                     { id: 'rSim3', value: 'S3', label: 'Sim. Mas não eram pessoas próximas.' },
                     { id: 'rNao1', value: 'N1', label: 'Não. Não tive contato com pessoas que pensaram e/ou tentaram se matar.' }
                 ]}
-                selectedValue={contatoSuicidio}
+                selectedValue={suicide}
                 onChange={handleInputChange(setContatoSuicidio)}
             />
 
@@ -288,7 +288,7 @@ function Form1() {
                     { id: 'rF7', value: 'f7', label: 'De 15 a 20 salários mínimos (de R$ 15.675,00 até R$ 20.900,00).' },
                     { id: 'rF8', value: 'f8', label: 'Mais de 20 salários mínimos (mais de R$ 20.900,00).' },
                 ]}
-                selectedValue={rendaFamiliar}
+                selectedValue={salaryAverage}
                 onChange={handleInputChange(setRendaFamiliar)}
             />
 
@@ -300,7 +300,7 @@ function Form1() {
                         className="text-input"
                         id="tObs"
                         rows="4"
-                        value={observacoes}
+                        value={obs}
                         onChange={handleInputChange(setObservacoes)}
                     ></textarea>
                 </div>

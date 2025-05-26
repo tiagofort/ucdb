@@ -1,14 +1,14 @@
-# 🧠 Pesquisa sobre Suicídio entre Estudantes de Medicina
+# 🧠 Research on Suicide Among Medical Students
 
-Esta aplicação foi desenvolvida como parte de um estudo investigativo sobre os **conhecimentos e atitudes de estudantes de medicina a respeito do suicídio**. A proposta é coletar dados de forma ética e segura, contribuindo para reflexões importantes no campo da saúde mental.
+This application was developed as part of a study investigating the **knowledge and attitudes of medical students toward suicide**. The goal is to ethically and securely collect data to support critical reflection in the field of mental health.
 
-## 🩺 Por que falar sobre suicídio?
+## 🩺 Why talk about suicide?
 
-O suicídio é uma questão de saúde pública global. Afeta milhões de pessoas todos os anos e é especialmente delicado no contexto da formação médica. Compreender o que pensam e sabem os futuros profissionais da saúde é fundamental para construir abordagens mais humanas, eficazes e preventivas.
+Suicide is a global public health issue. It affects millions of lives each year and carries particular significance in medical education. Understanding what future healthcare professionals know and feel about this topic is essential to building more compassionate and effective prevention strategies.
 
 ---
 
-## 💻 Tecnologias utilizadas
+## 💻 Technologies Used
 
 - JavaScript  
 - React  
@@ -16,4 +16,4 @@ O suicídio é uma questão de saúde pública global. Afeta milhões de pessoas
 
 ---
 
-**🧾 Projeto com fins acadêmicos e científicos.**
+**🧾 This project is for academic and research purposes only.**

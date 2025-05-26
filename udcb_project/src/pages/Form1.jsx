@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/form1.css';
 import { useNavigate } from 'react-router-dom';
 import saveIcon from '../assets/salvar.png';
@@ -37,6 +37,14 @@ function Form1() {
     }, []);
 
     useEffect(() => {
+        const termosAceitos = localStorage.getItem('confirmterms');
+    
+        if (termosAceitos !== 'true') {
+          navigate('/');
+        }
+    }, [navigate]);
+
+    useEffect(() => {
         if (state) {
             const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === state);
             if (estadoEncontrado) {
@@ -71,7 +79,6 @@ function Form1() {
             return;
         }
         const formData = { state, city, institutionType, age, gender, marital_status, religion, semester, experience_time, suicideCourse, suicideDiscipline, suicideInternship, suicide, salaryAverage, obs };
-        console.log("Dados do Formulário:", formData);
         localStorage.setItem("form1", JSON.stringify(formData));
         setModalMessage("Dados salvos com sucesso! (Simulação)");
         setShowModal(true);
@@ -92,7 +99,6 @@ function Form1() {
                 Primeiro, gostaria de saber seus dados sociodemográficos com o objetivo de caracterizar quem participou desta pesquisa.
             </h2>
 
-            {/* --- Pergunta 1: Estado --- */}
             <SelectInput
                 id="inputEstado"
                 label="1- Você mora em qual estado?"
@@ -101,7 +107,7 @@ function Form1() {
                 onChange={handleEstadoChange}
             />
 
-            {/* --- Pergunta 2: Cidade --- */}
+          
             <SelectInput
                 id="inputCidade"
                 label="2- Você mora em qual cidade?"
@@ -111,7 +117,7 @@ function Form1() {
                 disabled={!state || listaCidades.length <= 1}
             />
 
-            {/* --- Pergunta 3: Instituição --- */}
+
             <RadioGroup
                 name="rPP"
                 label="3- A instituição que você estuda é pública ou privada?"
@@ -124,13 +130,13 @@ function Form1() {
                 onChange={handleInputChange(setInstituicao)}
             />
 
-            {/* --- Pergunta 4: Idade --- */}
+          
             <div className="form-question">
                 <label className="legend-perguntas" htmlFor="iIdade">4- Qual a sua idade?</label>
                 <div className="input-container">
                     <input
                         type="number"
-                        className="text-input" // Similar a form-control
+                        className="text-input"
                         id="iIdade"
                         placeholder="Informe sua idade"
                         min="0"
@@ -141,7 +147,7 @@ function Form1() {
                 </div>
             </div>
 
-            {/* --- Pergunta 5: Sexo --- */}
+
             <RadioGroup
                 name="sexo"
                 label="5- Sexo:"
@@ -154,7 +160,7 @@ function Form1() {
                 onChange={handleInputChange(setSexo)}
             />
 
-            {/* --- Pergunta 6: Estado Civil --- */}         
+                 
             <RadioGroup
                 name="estCivil"
                 label="6- Estado Civil:"
@@ -169,7 +175,7 @@ function Form1() {
                 onChange={handleInputChange(setEstadoCivil)}
             />
 
-            {/* --- Pergunta 7: Religião --- */}
+            
             <RadioGroup
                 name="religiao"
                 label="7- Em relação a religião, você se considera:"
@@ -184,7 +190,7 @@ function Form1() {
                 onChange={handleInputChange(setReligiao)}
             />
 
-            {/* --- Pergunta 8: Período --- */}
+           
             <RadioGroup
                 name="periodo"
                 label="8- Está em que período do curso?"
@@ -201,7 +207,7 @@ function Form1() {
                 onChange={handleInputChange(setPeriodo)}
             />
 
-            {/* --- Pergunta 9: Experiência --- */}
+            
             <RadioGroup
                 name="experiencia"
                 label="9- Qual o seu tempo de experiência em estágios (atendendo pacientes)?"
@@ -216,7 +222,7 @@ function Form1() {
                 onChange={handleInputChange(setExperiencia)}
             />
 
-            {/* --- Pergunta 10: Curso Suicídio --- */}
+          
             <RadioGroup
                 name="cursoSuicidio"
                 label="10- Participou de algum curso (evento externo a sua Universidade) que tratou do tema Suicídio?"
@@ -230,7 +236,7 @@ function Form1() {
                 onChange={handleInputChange(setCursoSuicidio)}
             />
 
-            {/* --- Pergunta 11: Disciplina Suicídio --- */}
+            
             <RadioGroup
                 name="discSuicidio"
                 label="11- Participou de alguma disciplina (evento interno na sua Universidade) que tratou do tema Suicídio?"
@@ -244,7 +250,7 @@ function Form1() {
                 onChange={handleInputChange(setDiscSuicidio)}
             />
 
-            {/* --- Pergunta 12: Estágio Suicídio --- */}
+            
             <RadioGroup
                 name="estagSuicidio"
                 label="12- Durante sua atuação nos estágios, você teve contato com pacientes que disseram ter pensado ou tentado se matar?"
@@ -258,7 +264,7 @@ function Form1() {
                 onChange={handleInputChange(setEstagSuicidio)}
             />
 
-            {/* --- Pergunta 13: Contato Suicídio --- */}
+            
             <RadioGroup
                 name="suicidio"
                 label="13- Você teve contato com outras pessoas, familiares ou amigos, que pensaram e/ou tentaram se matar?"
@@ -273,7 +279,7 @@ function Form1() {
                 onChange={handleInputChange(setContatoSuicidio)}
             />
 
-            {/* --- Pergunta 14: Renda Familiar --- */}
+            
             <RadioGroup
                 name="rendaFamiliar"
                 label="14- Qual a renda mensal da sua família?"
@@ -292,7 +298,7 @@ function Form1() {
                 onChange={handleInputChange(setRendaFamiliar)}
             />
 
-            {/* --- Pergunta 15: Observações --- */}
+            
             <div className="form-question">
                 <label className="legend-perguntas" htmlFor="tObs">15- Deixamos o espaço abaixo para que você descreva o que sentir necessidade sobre a sua experiência com pacientes ou outras pessoas que pensaram e/ou tentaram se matar (RESPOSTA OPCIONAL).</label>
                 <div className="input-container">

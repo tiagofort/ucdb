@@ -1,12 +1,13 @@
 
 import React, { useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import '../css/index.css';
 import '../css/form2.css';
+import ucdb from '../assets/UCDB.jpg';
 import QuestionSlider from '../components/QuestionSlider';
 import ConfirmationModal from '../components/ConfirmationModal.jsx';
 import questions from '../data/form2.js';
+import api from '../service/api.js';
 
 
 function Form2() {
@@ -22,6 +23,13 @@ function Form2() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 50);
     }, []);
+
+    useEffect(() => {
+        const form1 = localStorage.getItem('form1');
+            if (form1 == null) {
+                navigate('/form1');
+            }
+    }, [navigate]);
 
     const handleAnswerChange = (index, value) => {
         const updatedAnswers = [...answers];
@@ -58,7 +66,7 @@ function Form2() {
         setPendingIndex(null);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit  = async (event) => {
         event.preventDefault();
         const research = JSON.parse(localStorage.getItem('formAnswers'));
         const socio = JSON.parse(localStorage.getItem('form1'));
@@ -66,21 +74,18 @@ function Form2() {
             research,
             socio
         };
-        fetch('http://localhost:3000/dataResearch', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(union)
-            })
-            .then(res => res.json())
-            .then(data => console.log('Resposta do servidor:', data))
-            .catch(err => console.error('Erro ao enviar:', err));
-        navigate('/');
+        await api.postDataResearch(union)
+        localStorage.removeItem('confirmterms');
+        localStorage.removeItem('form1');
+        localStorage.removeItem('formAnswers');
+        navigate('/end');
     }
 
     return (
         <form onSubmit={handleSubmit} className="form-wrapper">
+
+            <img src={ucdb} alt="Marca d'água" className="water-mark"></img>
+
             <h2 className="legenda-prin">
                 Primeiro, gostaria de saber seus dados sociodemográficos com o objetivo de caracterizar quem participou desta pesquisa.
             </h2>

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../css/form2Instruction.css';
 import '../css/index.css';
 import { useNavigate } from 'react-router-dom';
-import exeLeft from '../assets/exe-gif-left.gif';
-import exeRight from '../assets/exe-gif-right.gif';
-import currentQuestion from '../assets/peruntaatual.png';
-import yes from '../assets/sim.gif';
-import no from '../assets/nao.gif';
+import ucdb from '../assets/UCDB.jpg';
+import currentQuestion from '../assets/answering.png';
+import left from '../assets/left.gif';
+import right from '../assets/right.gif';
+import yes from '../assets/confirm_yes.gif';
+import no from '../assets/confirm_no.gif';
 import agreed from '../assets/positivo.png';
 
 
@@ -14,10 +15,20 @@ const Form2Instruction = () => {
   const navigate = useNavigate();
   const handleClick = () => {
       navigate('/form2')
-  };
+    };
+    
+    useEffect(() => {
+            const form1 = localStorage.getItem('form1');
+            if (form1 == null) {
+              navigate('/form1');
+            }
+    }, [navigate]);
 
   return (
-    <div className="consent-form-wrapper">
+      <div className="consent-form-wrapper">
+          
+        <img src={ucdb} alt="Marca d'água" className="water-mark"></img>
+          
         <div className="consent-details-content ">
               
         <legend className="legenda-prin">
@@ -44,17 +55,18 @@ const Form2Instruction = () => {
         </p>
       
         <legend className="legend-perguntas">1- Gosto de ouvir Sertanejo</legend>
-        <img src={exeLeft} className="img-fluid" alt="Exemplo" />
+        <img src={left} className="img-fluid" alt="Exemplo" />
 
         <legend className="legend-perguntas">1- A melhor comida que existe é pizza</legend>
-        <img src={exeRight} className="img-fluid" alt="Exemplo" />
+        <img src={right} className="img-fluid" alt="Exemplo" />
 
 
         <p className="p-principal">
             <span className='paragraph'>
                 Para otimizar ao máximo sua interação com o próximo formulário de pesquisa, nós estruturamos o mesmo para trabalhar questão a questão,
                 ou seja, você precisa responder uma questão e confirmar sua resposta para que a próxima seja liberada em sequência.
-                A <b>pergunta atual</b> é ressaltada com um <b>fundo verde</b>. Veja abaixo:
+                A <b>pergunta atual</b> é ressaltada com uma <b>fonte em cor amarela</b>, enquanto as demais estão com uma <b>fonte em cor branca</b>.
+                Você so conseguirá responder a pergunta com fonte amarela. Veja abaixo:
             </span>
         </p>
 

@@ -1,20 +1,30 @@
 // src/IndexPage.jsx
-import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './css/index.css'; // Import your custom CSS file for this component
-import signIcon from '../src/assets/assinar.png'; // Adjust path as needed
+import './css/index.css'; 
+import signIcon from '../src/assets/assinar.png';
 import ucdb from '../src/assets/UCDB.jpg';
+import NoticeModal from './components/NoticeModal';
 
 
 function Index() {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const handleConsentClick = () => {
-    navigate('/form1'); // Navigate to form1 page
-    alert("Terms agreed. Starting the questionnaire...");
+    setShowModal(true)
   };
 
-   // Todo o conteúdo está dentro desta div principal
+  const handleConfirm = () => {
+    localStorage.setItem('confirmterms', 'true');
+    setShowModal(false)
+    navigate('/form1')
+  }
+
+  const handleCancel = () => {
+    setShowModal(false)
+  }
+
   return (
     <div className="consent-form-wrapper">
 
@@ -106,6 +116,14 @@ function Index() {
           <img className="consent-button-icon" src={signIcon} alt="Ícone de concordar" />
           Concordar com os termos e começar
         </button>
+
+        <NoticeModal
+          msg="Você confirma que leu os termos da pesquisa e que concorda em participar?"
+          visible={showModal}
+          onConfirm={handleConfirm} 
+          onCancel={handleCancel}   
+        />
+
       </div>
 
     </div> 

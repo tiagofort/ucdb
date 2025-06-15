@@ -3,8 +3,8 @@ import '../css/form1.css';
 import { useNavigate } from 'react-router-dom';
 import saveIcon from '../assets/salvar.png';
 import ucdb from '../assets/UCDB.jpg';
-import cidadesPorEstadoData from '../data/cidades';
-import estadosBrasileiros from '../data/estados';
+import citiesPerState from '../data/cidades';
+import brazilianStates from '../data/estados';
 import SelectInput from '../components/SelectInput';
 import RadioGroup from '../components/RadioGroup';
 
@@ -13,20 +13,20 @@ function Form1() {
     const navigate = useNavigate();
     const [state, setEstado] = useState('');
     const [city, setCidade] = useState('');
-    const [listaCidades, setListaCidades] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
-    const [institutionType, setInstituicao] = useState('');
-    const [age, setIdade] = useState('');
-    const [gender, setSexo] = useState('');
-    const [marital_status, setEstadoCivil] = useState('');
-    const [religion, setReligiao] = useState('');
-    const [semester, setPeriodo] = useState('');
-    const [experience_time, setExperiencia] = useState('');
-    const [suicideCourse, setCursoSuicidio] = useState('');
-    const [suicideDiscipline, setDiscSuicidio] = useState('');
-    const [suicideInternship, setEstagSuicidio] = useState('');
-    const [suicide, setContatoSuicidio] = useState('');
-    const [salaryAverage, setRendaFamiliar] = useState('');
-    const [obs, setObservacoes] = useState('');
+    const [citiesList, setCitiesList] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
+    const [institutionType, setInstitution] = useState('');
+    const [age, setAge] = useState('');
+    const [gender, setGender] = useState('');
+    const [marital_status, setMaritalStatus] = useState('');
+    const [religion, setReligion] = useState('');
+    const [semester, setSemester] = useState('');
+    const [experience_time, setExperience] = useState('');
+    const [suicideCourse, setSuicideCourse] = useState('');
+    const [suicideDiscipline, setSuicideDiscipline] = useState('');
+    const [suicideInternship, setSuicideInternship] = useState('');
+    const [suicide, setSuicide] = useState('');
+    const [salaryAverage, setSalaryAverage] = useState('');
+    const [obs, setObs] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
@@ -46,19 +46,19 @@ function Form1() {
 
     useEffect(() => {
         if (state) {
-            const estadoEncontrado = cidadesPorEstadoData.estados.find(est => est.sigla === state);
-            if (estadoEncontrado) {
-                const nomesCidades = estadoEncontrado.cidades;
-                const cidadesFormatadas = [
+            const stateFound = citiesPerState.states.find(est => est.acronym === state);
+            if (stateFound) {
+                const citiesNames = stateFound.cities;
+                const formattedCities = [
                     { value: "", label: "Selecione..." },
-                    ...nomesCidades.map(nomeCidade => ({ value: nomeCidade, label: nomeCidade }))
+                    ...citiesNames.map(nomeCidade => ({ value: nomeCidade, label: nomeCidade }))
                 ];
-                setListaCidades(cidadesFormatadas);
+                setCitiesList(formattedCities);
             } else {
-                setListaCidades([{ value: "", label: "Estado inválido" }]);
+                setCitiesList([{ value: "", label: "Estado inválido" }]);
             }
         } else {
-            setListaCidades([{ value: "", label: "Selecione o estado primeiro" }]);
+            setCitiesList([{ value: "", label: "Selecione o estado primeiro" }]);
         }
         setCidade('');
     }, [state]);
@@ -102,7 +102,7 @@ function Form1() {
             <SelectInput
                 id="inputEstado"
                 label="1- Você mora em qual estado?"
-                options={estadosBrasileiros}
+                options={brazilianStates}
                 value={state}
                 onChange={handleEstadoChange}
             />
@@ -111,10 +111,10 @@ function Form1() {
             <SelectInput
                 id="inputCidade"
                 label="2- Você mora em qual cidade?"
-                options={listaCidades}
+                options={citiesList}
                 value={city}
                 onChange={handleInputChange(setCidade)}
-                disabled={!state || listaCidades.length <= 1}
+                disabled={!state || citiesList.length <= 1}
             />
 
 
@@ -127,7 +127,7 @@ function Form1() {
                     { id: 'rPV', value: 'R_PV', label: 'Privada' }
                 ]}
                 selectedValue={institutionType}
-                onChange={handleInputChange(setInstituicao)}
+                onChange={handleInputChange(setInstitution)}
             />
 
           
@@ -141,7 +141,7 @@ function Form1() {
                         placeholder="Informe sua idade"
                         min="0"
                         value={age}
-                        onChange={handleInputChange(setIdade)}
+                        onChange={handleInputChange(setAge)}
                         required
                     />
                 </div>
@@ -157,7 +157,7 @@ function Form1() {
                     { id: 'rFem', value: 'F', label: 'Feminino' }
                 ]}
                 selectedValue={gender}
-                onChange={handleInputChange(setSexo)}
+                onChange={handleInputChange(setGender)}
             />
 
                  
@@ -172,7 +172,7 @@ function Form1() {
                     { id: 'rNamorando', value: 'EC_N', label: 'Namorando' },
                 ]}
                 selectedValue={marital_status}
-                onChange={handleInputChange(setEstadoCivil)}
+                onChange={handleInputChange(setMaritalStatus)}
             />
 
             
@@ -187,7 +187,7 @@ function Form1() {
                     { id: 'rAteu', value: 'RL_AT', label: 'Ateu' },
                 ]}
                 selectedValue={religion}
-                onChange={handleInputChange(setReligiao)}
+                onChange={handleInputChange(setReligion)}
             />
 
            
@@ -204,7 +204,7 @@ function Form1() {
                     { id: 'r112', value: '112', label: '11º/12º período' },
                 ]}
                 selectedValue={semester}
-                onChange={handleInputChange(setPeriodo)}
+                onChange={handleInputChange(setSemester)}
             />
 
             
@@ -219,7 +219,7 @@ function Form1() {
                     { id: 'rM2', value: 'TE_M2S', label: 'Mais de 2 semestres' },
                 ]}
                 selectedValue={experience_time}
-                onChange={handleInputChange(setExperiencia)}
+                onChange={handleInputChange(setExperience)}
             />
 
           
@@ -233,7 +233,7 @@ function Form1() {
                     { id: 'rNRC', value: 'NR', label: 'Não recordo' }
                 ]}
                 selectedValue={suicideCourse}
-                onChange={handleInputChange(setCursoSuicidio)}
+                onChange={handleInputChange(setSuicideCourse)}
             />
 
             
@@ -247,7 +247,7 @@ function Form1() {
                     { id: 'rNRD', value: 'NR', label: 'Não recordo' }
                 ]}
                 selectedValue={suicideDiscipline}
-                onChange={handleInputChange(setDiscSuicidio)}
+                onChange={handleInputChange(setSuicideDiscipline)}
             />
 
             
@@ -261,7 +261,7 @@ function Form1() {
                     { id: 'rNRE', value: 'NR', label: 'Não recordo' }
                 ]}
                 selectedValue={suicideInternship}
-                onChange={handleInputChange(setEstagSuicidio)}
+                onChange={handleInputChange(setSuicideInternship)}
             />
 
             
@@ -276,7 +276,7 @@ function Form1() {
                     { id: 'rNao1', value: 'N1', label: 'Não. Não tive contato com pessoas que pensaram e/ou tentaram se matar.' }
                 ]}
                 selectedValue={suicide}
-                onChange={handleInputChange(setContatoSuicidio)}
+                onChange={handleInputChange(setSuicide)}
             />
 
             
@@ -295,7 +295,7 @@ function Form1() {
                     { id: 'rF8', value: 'f8', label: 'Mais de 20 salários mínimos (mais de R$ 20.900,00).' },
                 ]}
                 selectedValue={salaryAverage}
-                onChange={handleInputChange(setRendaFamiliar)}
+                onChange={handleInputChange(setSalaryAverage)}
             />
 
             
@@ -307,7 +307,7 @@ function Form1() {
                         id="tObs"
                         rows="4"
                         value={obs}
-                        onChange={handleInputChange(setObservacoes)}
+                        onChange={handleInputChange(setObs)}
                     ></textarea>
                 </div>
             </div>

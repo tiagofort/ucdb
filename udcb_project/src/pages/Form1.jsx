@@ -11,8 +11,8 @@ import RadioGroup from '../components/RadioGroup';
 function Form1() {
 
     const navigate = useNavigate();
-    const [state, setEstado] = useState('');
-    const [city, setCidade] = useState('');
+    const [state, setState] = useState('');
+    const [city, setCity] = useState('');
     const [citiesList, setCitiesList] = useState([{ value: "", label: "Selecione o estado primeiro" }]);
     const [institutionType, setInstitution] = useState('');
     const [age, setAge] = useState('');
@@ -60,7 +60,7 @@ function Form1() {
         } else {
             setCitiesList([{ value: "", label: "Selecione o estado primeiro" }]);
         }
-        setCidade('');
+        setCity('');
     }, [state]);
 
     const handleInputChange = (setter) => (event) => {
@@ -68,7 +68,7 @@ function Form1() {
     };
 
     const handleEstadoChange = (event) => {
-        setEstado(event.target.value);
+        setState(event.target.value);
     };
 
     const handleSubmit = (event) => {
@@ -113,7 +113,7 @@ function Form1() {
                 label="2- Você mora em qual cidade?"
                 options={citiesList}
                 value={city}
-                onChange={handleInputChange(setCidade)}
+                onChange={handleInputChange(setCity)}
                 disabled={!state || citiesList.length <= 1}
             />
 
